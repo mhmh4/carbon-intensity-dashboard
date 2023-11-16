@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [intensity, setIntensity] = useState({});
+
   useEffect(() => {
     (async () => {
       try {
@@ -9,6 +11,7 @@ export default function App() {
         );
         const intensity = await response.json();
         console.log(intensity.data[0]);
+        setIntensity(intensity.data[0]);
       } catch (error) {
         console.error(error);
       }
@@ -17,7 +20,9 @@ export default function App() {
 
   return (
     <>
-      <div></div>
+      <h4>Current Carbon Intensity</h4>
+      <div>Actual: {intensity?.intensity?.actual}</div>
+      <div>Expected: {intensity?.intensity?.forecast}</div>
     </>
   );
 }
