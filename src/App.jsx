@@ -5,6 +5,14 @@ import Chart from "./Chart";
 export default function App() {
   const [intensity, setIntensity] = useState({});
 
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  let currentDate = `${year}-${month}-${day}`;
+
   useEffect(() => {
     (async () => {
       try {
@@ -26,7 +34,7 @@ export default function App() {
       <div>Actual: {intensity?.intensity?.actual}</div>
       <div>Expected: {intensity?.intensity?.forecast}</div>
       <hr />
-      <Chart />
+      <Chart date={currentDate} />
     </>
   );
 }

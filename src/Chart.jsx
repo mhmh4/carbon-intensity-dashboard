@@ -10,21 +10,13 @@ import {
   YAxis,
 } from "recharts";
 
-export default function Chart() {
+export default function Chart({ date }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     setData([]);
 
-    const date = new Date();
-
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-
-    let currentDate = `${year}-${month}-${day}`;
-
-    const BASE_URL = `https://api.carbonintensity.org.uk/intensity/date/${currentDate}/`;
+    const BASE_URL = `https://api.carbonintensity.org.uk/intensity/date/${date}/`;
     const urls = [];
     for (let i = 1; i <= 48; i++) {
       urls.push(BASE_URL + i);
