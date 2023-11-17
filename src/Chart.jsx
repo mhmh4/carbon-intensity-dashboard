@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
 
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
 export default function Chart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    setData([]);
+
     const date = new Date();
 
     let day = date.getDate();
@@ -34,9 +46,20 @@ export default function Chart() {
 
   return (
     <>
-      {data.map((value) => {
-        return <div>{value}</div>;
-      })}
+      <LineChart
+        width={1000}
+        height={250}
+        data={data.map((value, index) => {
+          return { name: String(index), expected: value };
+        })}
+      >
+        <CartesianGrid />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line dataKey="expected" />
+      </LineChart>
     </>
   );
 }
