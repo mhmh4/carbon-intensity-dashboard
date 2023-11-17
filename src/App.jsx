@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import Chart from "./Chart";
+
 export default function App() {
   const [intensity, setIntensity] = useState({});
 
@@ -23,6 +25,8 @@ export default function App() {
       <h4>Current Carbon Intensity</h4>
       <div>Actual: {intensity?.intensity?.actual}</div>
       <div>Expected: {intensity?.intensity?.forecast}</div>
+      <hr />
+      <Chart />
     </>
   );
 }
