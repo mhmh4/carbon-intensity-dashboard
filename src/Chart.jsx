@@ -50,7 +50,7 @@ export default function Chart({ date }) {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line dataKey="expected" />
+        <Line isAnimationActive={false} dataKey="expected" />
       </LineChart>
     </>
   );
