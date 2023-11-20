@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Chart from "./Chart";
+import CurrentTime from "./CurrentTime";
 
 export default function App() {
   const [intensity, setIntensity] = useState({});
@@ -30,6 +31,8 @@ export default function App() {
 
   return (
     <>
+      <CurrentTime />
+      <hr />
       <h4>Current Carbon Intensity</h4>
       <div>Actual: {intensity?.intensity?.actual}</div>
       <div>Expected: {intensity?.intensity?.forecast}</div>
